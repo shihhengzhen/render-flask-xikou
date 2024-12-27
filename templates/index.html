@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="溪口文化美食景點介紹">
+    <meta name="author" content="資管夢之隊">
+
+    <title>小陀螺溪遊去</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link href="static/css/agency.css" rel="stylesheet">
+
+    <!-- 引入字體 -->
+    <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    
+</head>
+
+<body id="page-top" class="index">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand page-scroll" href="#page-top">
+                <img src="static/img/logo_white.png" alt="Logo" style="max-height: 50px; margin-top: -10px;">
+            </a>
+        </div>
+        <div class="logo-container" id="logo">
+            <img src="static/img/logo.png" alt="Logo" class="logo">
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="hidden">
+                    <a href="#page-top"></a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#活動快報">活動快報</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#溪口簡介">溪口特色</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#地圖">地圖</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#骰子牛">骰子牛</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#推薦行程">推薦行程</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#闖關遊戲">尋寶遊戲</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#聯絡我們">聯絡我們</a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Header -->
+<header>
+    <style>
+                /* 保證導航列水平排列 */
+    .navbar-nav {
+        display: flex;
+        flex-direction: row;
+    }
+    .navbar-nav li {
+        margin: 0 10px; /* 選項間距 */
+    }
+        header {
+            text-align: center;
+            color: #fff;
+            background-attachment: scroll;
+            background-image: url("{{ url_for('static', filename='img/header-bg1.jpg') }}");
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding: 100px 0;
+        }
+
+        /* 固定 logo 在導航欄左上角 */
+    .navbar .navbar-header {
+        position: absolute;  /* 使其相對於 navbar 進行定位 */
+        left: 10;
+        top: 10;
+    }
+
+    /* 設定 logo 的位置 */
+    .navbar .navbar-header .navbar-brand {
+        position: absolute;
+        left: 10;
+        top: 10%;  /* 讓 logo 垂直居中於導航欄 */
+        transform: translateY(-10%);  /* 垂直居中 */
+    }
+
+    /* 調整 logo 圖像大小 */
+    .navbar .navbar-header .navbar-brand img.logo {
+        max-height: 50px;  /* 限制 logo 最大高度 */
+        margin-top: 0;  /* 去掉原有的 margin-top */
+    }
+
+    .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;  /* 確保 navbar 在最上層 */
+}
+
+        /*top按鍵*/
+        #back-to-top {
+        position: fixed;
+        bottom: 30px;   /* 距離頁面底部30px */
+        right: 30px;    /* 距離頁面右側30px */
+        display: none;  /* 默認情況下隱藏 */
+        background-color: #f7d218;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        padding: 10px 15px;
+        font-size: 18px;
+        cursor: pointer;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        transition: opacity 0.3s;
+        z-index: 9999;
+    }
+
+    #back-to-top:hover {
+        background-color: #f7d218;  /* 滑鼠懸停時顏色改變 */
+    }
+
+    #photoCarousel {
+    width: 100%;  /* 讓輪播器寬度為100% */
+    height: 400px;  /* 固定高度 */
+    margin: 0 auto;  /* 保證輪播器居中 */
+    overflow: hidden;  /* 隱藏超出容器的部分 */
+    position: relative;
+}
+
+.carousel-inner img {
+    width: 100%;  /* 讓圖片寬度填滿容器 */
+    height: 100%;  /* 讓圖片的高度填滿容器 */
+    object-fit: contain;  /* 讓圖片保持比例並填滿容器 */
+    /*position: absolute;  /* 讓圖片相對輪播器定位 */
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+
+body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        section {
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+
+    </style>
+
+        <div class="container">
+            <div class="intro-text">
+                <div class="intro-lead-in">歡迎來到</div>
+                <div class="intro-heading">小陀螺溪遊記</div>
+                <a href="#活動快報" class="page-scroll btn btn-xl">讓我們開始吧</a>
+                
+            </div>
+        </div>
+        
+    </header>
+
+</section>
+    
+<!-- 照片輪播器 Section -->
+<section id="照片輪播器" class="bg-light-gray">
+<!-- 輪播器 -->
+                <div id="photoCarousel" class="carousel slide" data-ride="carousel">
+                    <!-- 輪播器指示點 -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#photoCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#photoCarousel" data-slide-to="1"></li>
+                        <li data-target="#photoCarousel" data-slide-to="2"></li>
+                        <li data-target="#photoCarousel" data-slide-to="3"></li>
+                        <li data-target="#photoCarousel" data-slide-to="4"></li>
+                    </ol>
+
+                    <!-- 輪播器內容 -->
+                    <div class="carousel-inner">
+                        <!-- 輪播項目 1 -->
+                        <div class="item active">
+                            <img src="static/img/風景1.jpg" alt="Photo 1">
+                        </div>
+                        <!-- 輪播項目 2 -->
+                        <div class="item">
+                            <img src="./static/img/風景3.jpg" alt="Photo 2">
+                        </div>
+                        <!-- 輪播項目 3 -->
+                        <div class="item">
+                            <img src="./static/img/風景2.jpg" alt="Photo 3">
+                        </div>
+                        <!-- 輪播項目 4 -->
+                        <div class="item">
+                            <img src="./static/img/風景4.jpg" alt="Photo 4">
+                        </div>
+                        <!-- 輪播項目 5 -->
+                        <div class="item">
+                            <img src="./static/img/風景5.jpg" alt="Photo 5">
+                        </div>
+                    </div>
+
+                    <!-- 輪播控制箭頭 -->
+<a class="left carousel-control" href="#photoCarousel" data-slide="prev">
+    <span class="arrow-left"></span>
+</a>
+<a class="right carousel-control" href="#photoCarousel" data-slide="next">
+    <span class="arrow-right"></span>
+</a>
+
+                </div>
+</section>
+<!-- 活動快報 Section -->
+<section id="活動快報" style="background-color: #f9f9f9; padding: 50px 0;">
+    <div class="container mt-5">
+        <h2 class="section-heading">活動快報</h2>
+        <table class="table table-bordered table-striped table-hover" style="border-radius: 20px; border: none;">
+            <thead class="text-center" style="background-color: #fed136 ; color: white; font-size: 2rem;">
+                <tr>
+                    <th scope="col" class="text-center">活動標題</th>
+                    <th scope="col" class="text-center">詳情</th>
+                </tr>                             
+            </thead>
+            <tbody style="text-align: center; font-size: 2rem;">
+                {% for title, link in titles_links %}
+                <tr>
+                    <td style="font-size: 2rem; color: #555;">{{ title }}</td>
+                    <td>
+                        <a href="{{ link }}" target="_blank" class="btn btn-primary btn-sm" style="font-size: 1.5rem; padding: 8px 20px;">查看詳情</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section id="溪口簡介" class="bg-light-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">溪口特色</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-6 portfolio-item">
+                <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
+                    <div class="portfolio-hover">
+                        <div class="portfolio-hover-content">
+                            <i class="fa fa-plus fa-3x"></i>
+                        </div>
+                    </div>
+                    <img src="static/img/portfolio/小稻米.jpg" class="img-responsive" alt="地方產業">
+                </a>
+                <div class="portfolio-caption">
+                    <h4>米食之鄉</h4>
+                    <p class="text-muted">
+                        溪口稻米，飄香四季，傳承百年農業的純樸與精華！</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 portfolio-item">
+                <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
+                    <div class="portfolio-hover">
+                        <div class="portfolio-hover-content">
+                            <i class="fa fa-plus fa-3x"></i>
+                        </div>
+                    </div>
+                    <img src="static/img/portfolio/竹編.jpg" class="img-responsive" alt="活動花絮">
+                </a>
+                <div class="portfolio-caption">
+                    <h4>特色文化</h4>
+                    <p class="text-muted">布袋戲的靈魂與竹編的匠心交織！</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 portfolio-item">
+                <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
+                    <div class="portfolio-hover">
+                        <div class="portfolio-hover-content">
+                            <i class="fa fa-plus fa-3x"></i>
+                        </div>
+                    </div>
+                    <img src="static/img/portfolio/鳥仔餅.jpg" class="img-responsive" alt="名勝古蹟">
+                </a>
+                <div class="portfolio-caption">
+                    <h4>必買伴手禮</h4>
+                    <p class="text-muted">傳統與創新的美味傳承！</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- 地圖 Section -->
+<section id="地圖">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">地圖選擇</h2>
+                <h3 class="section-subheading text-muted">選擇您要查看的地圖類型</h3>
+            </div>
+        </div>
+        <div class="row">
+            <!-- 選單在左側 -->
+            <div class="col-lg-4">
+                <div class="text-center mb-4">
+                    <!-- 放置圖片 -->
+                    <img id="mapImage" src="static/img/logo1.jpg" class="img-fluid mb-4" alt="地圖選擇圖片">        
+                    <select id="mapTypeSelector" class="form-select" style="margin-top: 20px; padding: 10px; font-size: 16px; border-radius: 5px; box-shadow: 0px 4px 6px rgba(0,0,0,0.1);">
+                        <option value="food">美食地圖</option>
+                        <option value="tourism">旅遊地圖</option>
+                        <option value="combined">綜合地圖</option>
+                    </select>
+                </div>
+            </div>
+            <!-- 地圖在右側 -->
+            <div class="col-lg-8">
+                <div id="mapContainer" class="mb-4"> 
+                    <iframe id="googleMap" width="100%" height="480" frameborder="0" style="border: none;"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // 取得選單、圖片和地圖 iframe 元素
+    const mapTypeSelector = document.getElementById('mapTypeSelector');
+    const googleMap = document.getElementById('googleMap');
+    const mapImage = document.getElementById('mapImage');
+    
+    // 地圖URL對應，根據選擇的地圖顯示不同的地圖
+    const mapUrls = {
+        food: {
+            url: "https://www.google.com/maps/d/embed?mid=1kRheMpnlz4QdkNt6o8qwj1tHJ8ZWRrw&ehbc=2E312F",
+            image: "static/img/logo1.jpg"
+        },
+        tourism: {
+            url: "https://www.google.com/maps/d/embed?mid=1cQFaN4pJg_obgtSFdfwsl0-vHb-hRnc&ehbc=2E312F",
+            image: "static/img/logo1.jpg"
+        },
+        combined: {
+            url: "https://www.google.com/maps/d/embed?mid=10Y5aM7orVTknu_kiwNs1N9g6Kb3qRZk&ehbc=2E312F",
+            image: "static/img/logo1.jpg"
+        }
+    };
+
+    // 初始化函數
+    function initializeMap() {
+        const defaultValue = mapTypeSelector.value; // 取得選單的預設值
+        const defaultMap = mapUrls[defaultValue];   // 對應的地圖配置
+        googleMap.src = defaultMap.url;            // 設定地圖iframe的src
+        mapImage.src = defaultMap.image;           // 設定圖片的src
+    }
+
+    // 當用戶選擇不同的地圖類型時更新iframe的src和圖片
+    mapTypeSelector.addEventListener('change', function () {
+        const selectedMap = mapUrls[mapTypeSelector.value];
+        googleMap.src = selectedMap.url;
+        mapImage.src = selectedMap.image; // 更新圖片
+    });
+
+    // 初始化地圖
+    initializeMap();
+</script>
+
+
+    <!--骰子牛-->
+    <section id="骰子牛" class="bg-light-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">骰子牛</h2>
+                    <p class="mt-3">骰出您的最佳選擇吧!</p>
+                </div>
+                <!-- 左側 - 3D 骰子動畫 -->
+                <div class="col-lg-6 text-center mb-4">
+                    <div id="diceContainer" style="width: 100%; height: 300px; background-color: #f8f9fa;"></div>
+                </div>
+                <script src="static/js/three.js"></script>
+                <script src="static/js/gsap.js"></script>
+                <style>
+                    #diceContainer { width: 300px; height: 300px; margin: auto; }
+                    input { display: block; margin: 10px auto; width: 80%; }
+                    button { display: block; margin: 10px auto; }
+                    #randomPickResult { text-align: center; margin-top: 20px; font-size: 1.5em;  background-color: #dcdcdc;}
+                </style>
+                <!-- 右側 - 美食輸入框與按鈕 -->
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        
+                            <input list="food1-options" class="form-control mb-3" id="food1" placeholder="請輸入或選擇美食 1">
+                                <datalist id="food1-options">
+                                    <option value="古早味豬血湯">
+                                    <option value="白嫩嫩碗稞">
+                                    <option value="燒燒ㄟ肉羹">
+                                    <option value="比臉大肉圓">
+                                    <option value="綿綿芋粿巧">
+                                    <option value="古早味剉冰">
+                                    <option value="料多多肉粽">
+                                    <option value="甜甜鳥仔餅">
+                                </datalist>
+                       
+                            <input list="food2-options" class="form-control mb-3" id="food2" placeholder="請輸入或選擇美食 2">
+                                <datalist id="food2-options">
+                                    <option value="古早味豬血湯">
+                                    <option value="白嫩嫩碗稞">
+                                    <option value="燒燒ㄟ肉羹">
+                                    <option value="比臉大肉圓">
+                                    <option value="綿綿芋粿巧">
+                                    <option value="古早味剉冰">
+                                    <option value="料多多肉粽">
+                                    <option value="甜甜鳥仔餅">
+                                </datalist>
+                       
+                            <input list="food3-options" class="form-control mb-3" id="food3" placeholder="請輸入或選擇美食 3">
+                                <datalist id="food3-options">
+                                    <option value="古早味豬血湯">
+                                    <option value="白嫩嫩碗稞">
+                                    <option value="燒燒ㄟ肉羹">
+                                    <option value="比臉大肉圓">
+                                    <option value="綿綿芋粿巧">
+                                    <option value="古早味剉冰">
+                                    <option value="料多多肉粽">
+                                    <option value="甜甜鳥仔餅">
+                                    </datalist>
+                        
+                            <input list="food4-options" class="form-control mb-3" id="food4" placeholder="請輸入或選擇美食 4">
+                                <datalist id="food4-options">
+                                    <option value="古早味豬血湯">
+                                    <option value="白嫩嫩碗稞">
+                                    <option value="燒燒ㄟ肉羹">
+                                    <option value="比臉大肉圓">
+                                    <option value="綿綿芋粿巧">
+                                    <option value="古早味剉冰">
+                                    <option value="料多多肉粽">
+                                    <option value="甜甜鳥仔餅">
+                                </datalist>
+                       
+                            <input list="food5-options" class="form-control mb-3" id="food5" placeholder="請輸入或選擇美食 5">
+                                <datalist id="food5-options">
+                                    <option value="古早味豬血湯">
+                                    <option value="白嫩嫩碗稞">
+                                    <option value="燒燒ㄟ肉羹">
+                                    <option value="比臉大肉圓">
+                                    <option value="綿綿芋粿巧">
+                                    <option value="古早味剉冰">
+                                    <option value="料多多肉粽">
+                                    <option value="甜甜鳥仔餅">
+                                </datalist>
+                       
+                            <input list="food6-options" class="form-control mb-3" id="food6" placeholder="請輸入或選擇美食 6">
+                                <datalist id="food6-options">
+                                    <option value="古早味豬血湯">
+                                    <option value="白嫩嫩碗稞">
+                                    <option value="燒燒ㄟ肉羹">
+                                    <option value="比臉大肉圓">
+                                    <option value="綿綿芋粿巧">
+                                    <option value="古早味剉冰">
+                                    <option value="料多多肉粽">
+                                    <option value="甜甜鳥仔餅">
+                                </datalist>
+                    <div class="form-group text-center">
+                        <!-- 隨機抽取按鈕 -->
+                        <button id="randomPickButton" class="btn btn-primary mb-3">幫我抽！</button>
+                        <!-- 隨機跑出物品按鈕 -->
+                        <button id="randomItemButton" class="btn btn-secondary mb-3">隨機吃一個！</button>
+                    </div>
+                    <div id="result" class="mt-3">
+                        <p><strong></strong> <span id="randomPickResult"></span></p>
+                    </div>
+                </div>
+            </div>
+            <div id="result" class="mt-3">
+                <p class="food-suggestion">
+                    <strong>我來推薦你吧!</strong> 
+                    <span id="randomItemResult" class="result-text"></span>
+                </p>                
+            </div>
+        </div>
+    </section>
+  
+
+    <!-- 推薦行程 Section -->
+<section id="推薦行程">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">推薦行程</h2>
+                <p>了解當前的溪口鄉天氣情況，幫助您更好地規劃旅程！</p>
+            </div>
+        </div>
+        <div class="row">
+             <!-- 左側天氣資訊 -->
+             <div class="col-md-6 weather-widget">
+                <h4>溪口鄉天氣預報</h4>
+                {% if weather_data %}
+                    {% for day, data in weather_data.items() %}
+                        <div class="weather-item" style="margin-bottom: 20px;">
+                            <!-- 根據天氣狀況顯示對應的圖像 -->
+                            <img src="{% if data.weather == 'overcast clouds' %}static/img/overcast_clouds.png
+                                    {% elif data.weather == 'clear sky' %}static/img/sunny.png
+                                    {% elif data.weather == 'light rain' %}static/img/light_rain.png
+                                    {% elif data.weather == 'broken clouds' %}static/img/broken_clouds.png
+                                    {% elif data.weather == 'few clouds' %}static/img/few_clouds.png
+                                    {% elif data.weather == 'moderate rain' %}static/img/moderate_rain.png
+                                    {% elif data.weather == 'scattered clouds' %}static/img/scattered_clouds.png
+                                    {% else %}static/img/sunny.png{% endif %}" 
+                                alt="{{ data.weather }}" class="weather-icon" style="width: 50px; height: 50px;">
+
+                            <!-- 動態顯示今日或明日的天氣資訊，字體加大 -->
+                            {% if day == 'day_1' %}
+                                <p style="font-size: 20px; font-weight: bold;">今日:</p>
+                                <p style="font-size: 18px;">
+                                    最高溫: {{ data.temperature_max }}°C, 最低溫: {{ data.temperature_min }}°C
+                                </p>
+                            {% elif day == 'day_2' %}
+                                <p style="font-size: 20px; font-weight: bold;">明日:</p>
+                                <p style="font-size: 18px;">
+                                    最高溫: {{ data.temperature_max }}°C, 最低溫: {{ data.temperature_min }}°C
+                                </p>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p style="font-size: 18px;">目前無法取得天氣資訊，請稍後再試。</p>
+                {% endif %}
+            </div>    
+            <!-- 右側 YouTube 影片 -->
+            <div class="col-md-6">
+                <h4>影片介紹</h4>
+                <video width="560" height="315" controls>
+                    <source src="static/video/video.mp4" type="video/mp4">
+                </video>                  
+            </div>
+        </div>
+    </div>
+</section>
+
+    
+<!-- 闖關遊戲 Section -->
+        <section id="闖關遊戲" class="bg-light-gray">
+            <div class="container">
+                <div class="row">
+                    <div class="gyroscope left-gyro" id="logo1">
+                        <img src="static/img/rope2.png" alt="左側陀螺">
+                        
+                    </div>
+                    <div class="col-lg-12 text-center">
+                        <h2 class="section-heading">美食獵人-尋寶遊戲</h2>  
+                    </div>
+                    <div class="gyroscope right-gyro" id="logo1">
+                        <img src="static/img/rope2.png" alt="右側陀螺">
+                        
+                    </div>
+                </div>                
+                <div class="row text-center">
+                    <label class="col-lg-8 text-center">請觀察各題目照片中的店家細節<br>你可以透過照片中發現每道菜餚的特徵與配料，從中找出正確的寶藏美食以及他的所在地點吧！<br>（也可以搭配上面的地圖當作參考喔~~）</label>
+                </div>
+                <div>
+                    <img src="static/img/地圖.jpg" alt="目前無照片" style="width: 800px; height: 600px;">
+                </div>
+            
+                <div class="questions-grid">
+                    <div class="question">
+                        <!-- 第一題 -->
+                        <div class="container">
+                            <!-- 圖片部分 -->
+                            <div class="row">
+                                <div class="input-group">
+                                    <div class="question-container" id="question1-container">
+                                        <div class="question-left">
+                                            <label for="snack1">1.寶藏美食：</label>
+                                            <select id="snack1">
+                                                <option value="">請選擇</option>
+                                                <option value="A">豬血湯</option>
+                                                <option value="B">蚵嗲</option>
+                                                <option value="C">肉圓</option>
+                                                <option value="D">煎盤粿</option>
+                                                <option value="E">烤玉米</option>
+                                            </select>
+                                        </div>
+                                        <div class="question-right">
+                                            <label for="store1">寶藏地點：</label>
+                                            <select id="store1">
+                                                <option value="">請選擇</option>
+                                                <option value="A">溪口肉圓</option>
+                                                <option value="B">中正路煎盤米果</option>
+                                                <option value="C">溪口廟口古早味烤玉米</option>
+                                                <option value="D">溪口蚵嗲黑輪攤</option>
+                                                <option value="E">溪口古早味豬血湯</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="photo-box">
+                                    <img class="scroll-image" src="static/img/豬血湯1.jpg" alt="目前無照片">
+                                </div>
+                                <div class="photo-box">
+                                    <img class="scroll-image" src="static/img/豬血湯2.jpg" alt="目前無照片">
+                                </div>
+                                <div class="photo-box">
+                                    <img class="scroll-image" src="static/img/豬血湯3.jpg" alt="目前無照片">
+                                </div>
+                            </div>
+                        </div>                        
+                    <div class="question">
+                        <!-- 第二題 -->
+                        <div class="row">
+                            <div class="photo-box">
+                                <img class="scroll-image" src="static/img/煎盤粿1.jpg" alt="目前無照片">
+                            </div>
+                            <div class="photo-box">
+                                <img class="scroll-image" src="static/img/煎盤粿2.jpg" alt="目前無照片">
+                            </div>
+                            <div class="photo-box">
+                                <img class="scroll-image" src="static/img/煎盤粿3.jpg" alt="目前無照片">
+                            </div>
+                            <div class="input-group">
+                                <div class="question-container" id="question2-container">
+                                    <div class="question-left">
+                                        <label for="snack2">2.寶藏美食：</label>
+                                        <select id="snack2">
+                                            <option value="">請選擇</option>
+                                            <option value="A">豬血湯</option>
+                                            <option value="B">蚵嗲</option>
+                                            <option value="C">肉圓</option>
+                                            <option value="D">煎盤粿</option>
+                                            <option value="E">烤玉米</option>
+                                        </select>
+                                        &nbsp;&nbsp;&nbsp;
+                                        <label for="store2">寶藏地點：</label>
+                                        <select id="store2">
+                                            <option value="">請選擇</option>
+                                            <option value="A">溪口肉圓</option>
+                                            <option value="B">中正路煎盤米果</option>
+                                            <option value="C">溪口廟口古早味烤玉米</option>
+                                            <option value="D">溪口蚵嗲黑輪攤</option>
+                                            <option value="E">溪口古早味豬血湯</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="questions-grid">
+                    <div class="question">
+                        <!-- 第三題 -->
+                        <div class="row">
+                            <div class="input-group">
+                                <div class="question-container" id="question3-container">
+                                    <div class="question-left">
+                                        <label for="snack3">3.寶藏美食：</label>
+                                        <select id="snack3">
+                                            <option value="">請選擇</option>
+                                            <option value="A">豬血湯</option>
+                                            <option value="B">蚵嗲</option>
+                                            <option value="C">肉圓</option>
+                                            <option value="D">煎盤粿</option>
+                                            <option value="E">烤玉米</option>
+                                        </select>
+                                    </div>
+                                    <div class="question-right">
+                                        <label for="store3">寶藏地點：</label>
+                                        <select id="store3">
+                                            <option value="">請選擇</option>
+                                            <option value="A">溪口肉圓</option>
+                                            <option value="B">中正路煎盤米果</option>
+                                            <option value="C">溪口廟口古早味烤玉米</option>
+                                            <option value="D">溪口蚵嗲黑輪攤</option>
+                                            <option value="E">溪口古早味豬血湯</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="photo-box">
+                                <img class="scroll-image" src="static/img/烤玉米1.jpg" alt="目前無照片">
+                            </div>
+                            <div class="photo-box">
+                                <img class="scroll-image" src="static/img/烤玉米2.jpg" alt="目前無照片">
+                            </div>
+                            <div class="photo-box">
+                                <img class="scroll-image" src="static/img/烤玉米3.jpg" alt="目前無照片">
+                            </div>
+                        </div>
+                        
+                    </div>
+                
+                    <div class="question">
+                        <!-- 第四題 -->
+                        <div class="row">
+                            
+                            <div class="photo-box">
+                                <img class="scroll-image" src="static/img/蚵嗲1.jpg" alt="目前無照片">
+                            </div>
+                            <div class="photo-box">
+                                <img class="scroll-image" src="static/img/蚵嗲2.jpg" alt="目前無照片">
+                            </div>
+                            <div class="photo-box">
+                                <img class="scroll-image" src="static/img/蚵嗲3.jpg" alt="目前無照片">
+                            </div>
+                            <div class="input-group">
+                                <div class="question-container" id="question4-container">
+                                    <div class="question-left">
+                                        <label for="snack4">4.寶藏美食：</label>
+                                        <select id="snack4">
+                                            <option value="">請選擇</option>
+                                            <option value="A">豬血湯</option>
+                                            <option value="B">蚵嗲</option>
+                                            <option value="C">肉圓</option>
+                                            <option value="D">煎盤粿</option>
+                                            <option value="E">烤玉米</option>
+                                        </select>
+                                    </div>
+                                    <div class="question-right">
+                                        <label for="store4">寶藏地點：</label>
+                                        <select id="store4">
+                                            <option value="">請選擇</option>
+                                            <option value="A">溪口肉圓</option>
+                                            <option value="B">中正路煎盤米果</option>
+                                            <option value="C">溪口廟口古早味烤玉米</option>
+                                            <option value="D">溪口蚵嗲黑輪攤</option>
+                                            <option value="E">溪口古早味豬血湯</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="questions-grid">
+                    <div class="question">
+                        <!-- 第五題 -->
+                        <div class="row">
+                            <div class="input-group">
+                                <div class="question-container" id="question5-container">
+                                    <div class="question-left">
+                                        <label for="snack5">5.寶藏美食：</label>
+                                        <select id="snack5">
+                                            <option value="">請選擇</option>
+                                            <option value="A">豬血湯</option>
+                                            <option value="B">蚵嗲</option>
+                                            <option value="C">肉圓</option>
+                                            <option value="D">煎盤粿</option>
+                                            <option value="E">烤玉米</option>
+                                        </select>
+                                    </div>
+                                    <div class="question-right">
+                                        <label for="store5">寶藏地點：</label>
+                                        <select id="store5">
+                                            <option value="">請選擇</option>
+                                            <option value="A">溪口肉圓</option>
+                                            <option value="B">中正路煎盤米果</option>
+                                            <option value="C">溪口廟口古早味烤玉米</option>
+                                            <option value="D">溪口蚵嗲黑輪攤</option>
+                                            <option value="E">溪口古早味豬血湯</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="photo-box">
+                                <img class="scroll-image" src="static/img/肉圓1.jpg" alt="目前無照片">
+                            </div>
+                            <div class="photo-box">
+                                <img class="scroll-image" src="static/img/肉圓2.jpg" alt="目前無照片">
+                            </div>
+                            <div class="photo-box">
+                                <img class="scroll-image" src="static/img/肉圓3.jpg" alt="目前無照片">
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <button class="submit-btn" onclick="checkAnswers();">對答案</button>
+                <div id="resultans" class="mt-3">
+                    <p><strong></strong> <span id="randomPickResult"></span></p>
+                    <p><strong></strong> <span id="randomItemResult"></span></p>
+                </div>
+            </div>
+        </section>
+
+    <!-- 夢支隊的頭? -->
+    <aside class="clients">
+        <div class="container">
+            <div class="row clients-row">
+                <div class="col">
+                    <img src="static/img/1114550.jpg" class="img-responsive img-centered" alt="" style="width: 150px; height: auto;">
+                </div>
+                <div class="col">
+                    <img src="static/img/114535.jpg" class="img-responsive img-centered" alt="" style="width: 150px; height: auto;">
+                </div>
+                <div class="col">
+                    <img src="static/img/1114556.jpg" class="img-responsive img-centered" alt="" style="width: 130px; height: auto;">
+                </div>
+                <div class="col">
+                    <img src="static/img/1114564.jpg" class="img-responsive img-centered" alt="" style="width: 150px; height: auto;">
+                </div>
+                <div class="col">
+                    <img src="static/img/1114566.jpg" class="img-responsive img-centered" alt="" style="width: 150px; height: auto;">
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <section id="聯絡我們">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Contact Us</h2>
+                    <p>請隨時通過以下聯絡方式與我們聯繫：</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Address:</h4>
+                    <p>嘉義大學 600嘉義市東區學府路300號</p>
+                    
+                    <h4>Phone:</h4>
+                    <p>+123 456 7890</p>
+                    
+                    <h4>Email:</h4>
+                    <p>misdream666@gmail.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                
+            </div>
+        </div>
+    </footer>
+    <!-- Portfolio 1 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="container">
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-lg-8">
+                        <div class="modal-body">
+                            <h2>米食之鄉</h2>
+                            <p class="item-intro text-muted">溪口稻米，飄香四季，傳承百年農業的純樸與精華！</p>
+                            <img class="img-responsive mx-auto d-block" src="static/img/portfolio/稻米.jpg" alt="">
+                            <p style="text-align: left;">
+                                在嘉義縣溪口鄉，金黃色的稻田隨風搖曳，每一粒飽滿的稻米，都承載著農夫汗水與自然的恩賜。這裡的稻米，以優質水源與肥沃土壤孕育而成，粒粒晶瑩、口感Q彈，堪稱米食中的極品！我們結合傳統農業與創新理念，將米食文化融入現代生活，開發出多元化的文創產品，從米香茶、米果零食到米粉糕點，每一款都滿載濃郁的在地風味。品溪口好米，品一份土地的初心與感動！
+                              </p>                              
+                            <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i>關閉</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Portfolio 2 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="container">
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-lg-8">
+                        <div class="modal-body">
+                            <h2>特色文化</h2>
+                            <p class="item-intro text-muted">溪口之美：布袋戲的靈魂與竹編的匠心交織！</p>
+                            <img class="img-responsive" src="static/img/portfolio/布袋戲.jpg" alt="">
+                            <p style="text-align: left;">嘉義縣溪口鄉，是傳統藝術與手工技藝的溫暖搖籃。這裡的布袋戲文化，如同躍動的靈魂，在指尖間傳承百年。長義閣掌中劇團、東五洲掌中劇團等知名團隊，以精湛的表演與創新的劇碼，讓布袋戲不僅是傳統，也是現代的視覺盛宴。在溪口，每一場戲，都是對文化傳承的致敬。同時，溪口的竹編工藝以其細膩與巧思聞名於世。崙尾天赦竹編發展協會匯聚當地匠人，用雙手將一根根竹條編織成藝術品，從生活器具到創意擺飾，每一件作品都充滿自然的韻味與手作的溫度。來溪口，與布袋戲相遇，感受歷史的脈動；與竹編工藝邂逅，體驗匠心的溫柔。讓傳統之美，為您的旅程增添無限色彩！<p>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i>關閉</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio 3 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="container">
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-lg-8">
+                        <div class="modal-body">
+                            <h2>必買伴手禮</h2>
+                            <p class="item-intro text-muted">溪口鳥仔餅：傳統與創新的美味傳承！</p>
+                            <img class="img-responsive" src="static/img/portfolio/小鳥仔餅.jpg" alt="">
+                            <p style="text-align: left;">走進嘉義縣溪口鄉，您一定會被一款別具風情的小點心吸引目光——鳥仔餅。這款獨特的傳統糕點，以其可愛的小鳥造型與濃厚的文化意涵，成為溪口鄉的美食名片。鳥仔餅的起源與中元普渡祭典緊密相連，最初作為供奉品的它，經過代代匠人的巧手改良，如今不僅保留了傳統風味，還融入現代創意，成為兼具美味與寓意的伴手禮。每一塊鳥仔餅，都由精選材料手工製作，外皮酥脆、內餡香甜，滿口皆是幸福滋味。溪口鄉致力於推廣鳥仔餅文化，通過觀光工廠和製作體驗活動，讓遊客親手體驗從揉麵、塑形到烘烤的全過程，感受這款傳統點心背後的溫度與故事。不僅如此，當地更推出多種創新口味，如抹茶、芝麻、紅豆，讓鳥仔餅散發新的魅力，俘獲更多現代饕客的心。一口鳥仔餅，一段溪口情。 來溪口，帶一份鳥仔餅回家，品嚐的不僅是美味，還有一段蘊含濃厚文化的故事。讓鳥仔餅成為您心中最甜蜜的溪口記憶！<p>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i>關閉</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+ 
+    <script src="static/js/script.js"></script>
+    <!-- jQuery Version 1.11.0 -->
+    <script src="static/js/jquery-1.11.0.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="static/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="static/js/classie.js"></script>
+    <script src="static/js/cbpAnimatedHeader.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="static/js/jqBootstrapValidation.js"></script>
+    <script src="static/js/contact_me.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="static/js/agency.js"></script>
+
+</body>
+
+</html>
